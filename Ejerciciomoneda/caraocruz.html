@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <title>Cara o Cruz</title>
+    <script language="javascript">
+        var boton1 = document.getElementById("bcara");
+        var boton2 = document.getElementById("bcruz");
+    </script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script language="javascript">
+        body {
+            font - family: "Trebuchet MS", "Helvetica", "Arial", "Verdana", "sans-serif";
+            font - size: 62.5 %;
+        }
+    </script>
+    <script>
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 500  //antes era 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 500  //antes era 1000
+                }
+            });
+
+            $("#opener").on("click", function () {
+                $("#dialog").dialog("open");
+            });
+            $("#closer").on("click", function () {
+                $("#dialog").dialog("close");
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        var elegido="";
+        function getValue(eleccion) {
+
+            document.getElementById('valoresMoneda').innerHTML;
+            alert("Elegiste " + eleccion + ". Ahora Inicia el juego.");
+            elegido = eleccion;
+        }
+    
+        function calcular() {
+            var resultados = ['cara', 'cruz'];
+            var resultado = resultados[Math.floor(Math.random() * resultados.length)];
+            if (resultado == elegido){
+                alert('¡Ha salido ' + resultado + "! Y tú elegiste " + elegido + " ¡Enhorabuena!");
+            } else {
+            alert('¡Ha salido ' + resultado + "! Y tú elegiste " + elegido + ", has perdido, lo siento.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <center>
+                <h2>Juega a Cara o Cruz (jQuery)</h2>
+                <input type="button" onclick="location.href='../index.html';" value="Volver a Página Principal">
+            </center>
+                <img class="img-responsive" src="../imagenes/desarrolloweb.png" alt="cabecera" />
+                <p>1. Elige con cuál quieres jugar: cara o cruz.</p>
+                <p>2. Presiona el botón de "Jugar" para echarlo a suerte con la máquina.</p>
+                <p>3. En el contador verás las veces que ha salido cada resultado, el número de tiradas y cuántas veces has ganado tú.</p>
+</div>
+    </div>
+    <div class="container" >
+        <center>
+            <button onclick="getValue('cara')" id="valoresMoneda" value="cara">
+                <br>
+                <img src="./imagenes/cara.gif" width="150" height="150" alt="">
+                <hr>
+                <b>CARA</b>
+            </button>
+            <button onclick="getValue('cruz')" id="valoresMoneda" value="cruz">
+                <br>
+                <img src="./imagenes/cruz.gif" width="150" height="150" alt="">
+                <hr>
+                <b>CRUZ</b>
+            </button>
+        </center>
+    </div>
+    <br />
+    <div class="container">
+        <center>
+            <button id="opener">Iniciar juego</button>
+            <div id="dialog" title="">
+                <center>
+                    <p>Ejecutando</p>
+                    <img src="./imagenes/flip.gif" alt="Placeholder Image" width="275" height="275" />
+                    <input type="button" id="closer" onclick="calcular();" value="Parar"/>
+                </center>
+            </div>
+        </center>
+</div>
+    <br/><br/><br/><br/>
+</body>
+</html>
